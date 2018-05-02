@@ -50,10 +50,10 @@ public class MAHModule : MonoBehaviour {
         { "coordinates", "You're walking funny. Have you lost your coordinates?" },
         { "crazy talk", "You're talking crazy. Get out." },
         { "cryptography", "Your mind is so cryptic, I can't read it." },
-        { "double-oh", "You may have double As, you may have double Ds, but double Os are the best." },
+        { "double-oh", "Who cares about Double As or Double Ds when you can have Double Os?" },
         { "emoji math" , "Did you know your texts can include words, and not just emojis?" },
         { "english test", "Do you know the difference between your crap and you're crap?" },
-        { "filibuster", "Remember the title and just keep talking" },
+        { "filibuster", "Remember the title and just keep talking." },
         { "follow the leader", "If this bomb explodes, you're following the wrong political leader." },
         { "foreign exchange rates", "No currency exchange point? You should've taken your card." },
         { "forget me not", "Well done. You forgot it not." },
@@ -123,7 +123,119 @@ public class MAHModule : MonoBehaviour {
         { "wire sequence", "Trickier than it sounds; all the wires are hidden behind panels." },
         { "wires", "Cut all the wires!" },
         { "word scramble", "You got scrambled by your own sword." },
-        { "word search", "You’re searching for a word? It’s the bird." }
+        { "word search", "You’re searching for a word? It’s the bird." },
+        	{
+			"ice cream",
+			"I scream, you scream, but only I love it."
+		},
+		{
+			"the swan",
+			"Your serial number is 4815162342."
+		},
+		{
+			"monsplode trading cards",
+			"Who cares about Monsplodes? Trade them away!"
+		},
+		{
+			"neutralization",
+			"Your goal is to neutralize this bomb."
+		},
+		{
+			"the sun",
+			"It's so bright! Who turned the sun on?"
+		},
+		{
+			"european travel",
+			"Europe is a great destination for travels."
+		},
+		{
+			"blind maze",
+			"You'll feel like a blind man in this maze."
+		},
+		{
+			"cheap checkout",
+			"Check out this bomb sale! It's so cheap!"
+		},
+		{
+			"the iphone",
+			"Put down your iPhone and solve this bomb!"
+		},
+		{
+			"the stopwatch",
+			"Stop the watch! Hammer time!"
+		},
+		{
+			"backgrounds",
+			"Are you sure you want that background for your photo?"
+		},
+		{
+			"burglar alarm",
+			"This burglar alarm is distracting me from defusing."
+		},
+		{
+			"button sequences",
+			"You can't just press all the buttons, it has to be the correct sequence."
+		},
+		{
+			"the clock",
+			"Tick tock, start the bomb clock."
+		},
+		{
+			"colored switches",
+			"Let's switch on these colours."
+		},
+		{
+			"game of life simple",
+			"I want to play a game. A game of life and death."
+		},
+		{
+			"faulty backgrounds",
+			"You bombed that selfie cause of faulty background."
+		},
+		{
+			"mortal kombat",
+			"The kombat with this bomb is a mortal one."
+		},
+		{
+			"the moon",
+			"Darkness all around, not even the moon is shining."
+		},
+		{
+			"symbolic coordinates",
+			"Coordination does not exist, it's only symbolic."
+		},
+		{
+			"hunting",
+			"If you explode, I'm gonna hunt you down."
+		},
+		{
+			"zoo",
+			"You're an animal. You should be in a zoo."
+		},
+		{
+			"cooking",
+			"You blew me up even though I cooked for you!"
+		},
+		{
+			"creation",
+			"God created the world and you blew it up. Shame on you."
+		},
+		{
+			"braille",
+			"The bomb blew your eyes out. Start learning Braille."
+		},
+		{
+			"big circle",
+			"You blow up, you die. The big circle of life."
+		},
+		{
+			"chord qualities",
+			"You struck the wrong chords. Kaboom."
+		},
+		{
+			"game of life cruel",
+			"Life is cruel. So are games."
+		}
     };
 
     private List<string> WhiteCardText;
