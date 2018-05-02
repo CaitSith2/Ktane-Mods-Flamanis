@@ -25,106 +25,519 @@ public class MAHModule : MonoBehaviour {
 
     private const int AMOUNT_OF_CARDS = 10;
 
-    private static string[] WhiteModuleIDs = { "wire sequence", "simon says", "maze", "memory", "needy capacitor", "who's on first", "needy vent gas", "modules against humanity", "needy knob", "morse code", "two bits", "anagrams", "word scramble", "semaphore", "colour flash", "logic", "listening", "mystic square", "crazy talk", "silly slots", "probing", "forget me not", "morsematics", "simon states", "perspective pegs", "caesar cipher", "tic tac toe", "astrology", "adventure game", "skewed slots", "blind alley", "english test", "mouse in the maze", "turn the keys", "turn the key", "tetris", "sea shells", "murder","adjacent letters","colored squares" ,"hexamaze" ,"souvenir", "simon screams", "http response", "wire placement", "coordinates", "battleship", };
-    private static string[] BlackModuleIDs = { "the button", "password", "wires", "keypad", "complicated wires", "chess", "switches", "emoji math", "letter keys", "orientation cube", "piano keys", "connection check", "cryptography", "number pad", "alphabet", "round keypad", "plumbing", "safety safe", "resistors", "microcontroller", "the gamepad", "laundry", "3d maze", "follow the leader", "friendship", "the bulb", "monsplode, fight!", "foreign exchange rates", "combination lock", "shape shift", "needy math", "lights out", "motion sense", "needy rotary phone", "needy quiz", "who's that monsplode?", "filibuster","third base","bitmaps","rock-paper-scissors-l.-sp.","square button", "broken buttons", "word search", "complicated buttons", "symbolic password", "light cycle", "text field", "double-oh"};
-
-    private static Dictionary<string, string> ModuleTexts = new Dictionary<string, string>() {
-        { "3d maze", "Want to see this in 3D? There are special glasses for it." },
-        { "adjacent letters", "Bomb exploded. I was adjacent to it." },
-        { "adventure game", "That's okay. There will be another adventure waiting for you soon." },
-        { "alphabet", "Never try tongue twisters before you learn alphabet." },
-        { "anagrams", "The instructions were clear and not in anagrams; you're an idiot." },
-        { "astrology", "No success? I guess your zodiac was under the wrong planet's influence." },
-        { "battleship", "This bomb is a true battle, just not on a ship." },
-        { "bitmaps" ,  "Lost in this bomb? Here's a bit of a map."},
-        { "blind alley", "You're done. No way out from this blind alley." },
-        { "broken buttons", "Pressing these buttons is useless. They’re broken." },
-        { "caesar cipher", "You dealt with it like a true Caesar." },
-        { "chess", "I would play even Billy the Puppet if that game was chess." },
-        { "colored squares" , "It's cool to be square but only if your colored." },
-        { "colour flash", "That almost got you dead. Your whole life flashed before your eyes." },
-        { "combination lock", "Are you sure this is the combination you need?" },
-        { "complicated buttons", "Pressing buttons should be easy, not complicated." },
-        { "complicated wires", "Cut all the wires! It's not that complicated after all." },
-        { "connection check", "Bomb exploded due to bad wifi connection." },
-        { "coordinates", "You're walking funny. Have you lost your coordinates?" },
-        { "crazy talk", "You're talking crazy. Get out." },
-        { "cryptography", "Your mind is so cryptic, I can't read it." },
-        { "double-oh", "Who cares about Double As or Double Ds when you can have Double Os?" },
-        { "emoji math" , "Did you know your texts can include words, and not just emojis?" },
-        { "english test", "Do you know the difference between your crap and you're crap?" },
-        { "filibuster", "Remember the title and just keep talking." },
-        { "follow the leader", "If this bomb explodes, you're following the wrong political leader." },
-        { "foreign exchange rates", "No currency exchange point? You should've taken your card." },
-        { "forget me not", "Well done. You forgot it not." },
-        { "friendship", "They say Monopoly ruins friendships. They have not tried KTANE." },
-        { "hexamaze", "Someone must have put a-maze-ing hex on you." },
-        { "http response", "404. The bomb not found." },
-        { "keypad", "If you recognize any of these symbols, you're a smart fella." },
-        { "laundry", "Friends are coming over. Quick, hide all your dirty laundry!" },
-        { "letter keys", "Wait, now keys have letters on them? What is this sorcery?" },
-        { "light cycle", "Dark in the room? Just cycle through the lights." },
-        { "lights out", "Lights are out. Bomb's unavailable for 10 seconds." },
-        { "listening", "Just got a strike. You need to listen to your experts better." },
-        { "logic", "Do you have at least a pinch of logic in that head of yours?" },
-        { "maze", "I know you feel lost. Sadly, this is not a maze so there's no way out." },
-        { "memory", "Nope, that doesn't work. Try memorizing the manual next time." },
-        { "microcontroller", "Trust your experts, don’t micro control them." },
-        { "modules against humanity", "Yes, this bomb is very inhumane. Deal with it." },
-        { "monsplode, fight!", "Why fight your family when you can fight Monsplodes? " },
-        { "morse code" , "If you're bad with words, try Morse code instead." },
-        { "morsematics", "If you're bad with words, try Morsematics code instead." },
-        { "motion sense", "Moves like Jagger? Not with that motion sense of yours." },
-        { "mouse in the maze", "Tsk. Poor little mouse, can't do anything right." },
-        { "murder", "If this doesn't get you murdered, I don't know what will." },
-        { "mystic square", "You need serious help. From a shaman or a mystic, nothing less." },
-        { "needy capacitor", "You're on the dishonorable discharge, Take your capacitor and leave." },
-        { "needy knob", "You can play with this knob even when you're done with the bomb." },
-        { "needy math", "Math is hard." },
-        { "needy quiz", "I know you hate answering questions, but we do have to test you." },
-        { "needy rotary phone", "Here, phone a friend for help. Old school style." },
-        { "needy vent gas", "Stop venting your emotions. Vent gas instead." },
-        { "number pad", "Keypad here, keypad there. I want a keypad with numbers!" },
-        { "orientation cube", "Bad luck with your crush? Maybe it’s just their sexual orientation." },
-        { "password", "You need to know the secret password to defuse this bomb." },
-        { "perspective pegs", "If you can't do it, try to look from a different perspective." },
-        { "piano keys", "Musical instruments? I recommend trying piano." },
-        { "plumbing", "If you don't find a way out, try crawling through pipes." },
-        { "probing", "Bad news. You're actually being probed by aliens." },
-        { "resistors", "Don't resist the temptation. Just do it." },
-        { "rock-paper-scissors-l.-sp.", "You're fighting a lizard. But don't use caber, use scissors." },
-        { "round keypad", "You spin my head right round with those fancy symbols." },
-        { "safety safe", "This bomb is so valuable it should be locked in a safe." },
-        { "sea shells", "Who cares what she sells? She's not gonna sell it to you." },
-        { "semaphore", "Just as I expected, you're waving a white flag already." },
-        { "shape shift", "Why be a human when you can shapeshift into an owl?" },
-        { "silly slots", "You failed. What a silly slot you are." },
-        { "simon says", "Too late. simon says you should try again." },
-        { "simon screams", "Simon screams at your incompetence." },
-        { "simon states", "Too late. Simon states you should try again." },
-        { "skewed slots", "Well, that's what happens when your world view is so skewed." },
-        { "souvenir", "This explosion will leave a few souvenirs on your body." },
-        { "square button", "Push the square button. Galvanize." },
-        { "switches", "It’s useless. Switch to another bomb." },
-        { "symbolic password", "Your password must be 6 symbols long." },
-        { "tetris", "If you're tired of bombs, you could always play Tetris instead." },
-        { "text field", "Who needs fields of gold when you have a field of text?" },
-        { "the bulb", "You think you have a great idea? Nah, that's just a bulb above your head." },
-        { "the button", "Push the button. Galvanize." },
-        { "the gamepad", "Two kinds of people: those who use gamepad and the boring ones." },
-        { "third base", "Don't tell me you're already in third base with this bomb?" },
-        { "tic tac toe", "Lots of love, XOXO, The Bomb." },
-        { "turn the key", "Just turn the key and leave the room." },
-        { "turn the keys", "Just turn the keys and leave the room." },
-        { "two bits", "Here's my two bits of information: you're gonna explode." },
-        { "who's on first", "You're clearly the last, but who's first?" },
-        { "who's that monsplode?", "Fighting Monsplodes? Identify them first." },
-        { "wire placement", "Be careful where you place those wires!" },
-        { "wire sequence", "Trickier than it sounds; all the wires are hidden behind panels." },
-        { "wires", "Cut all the wires!" },
-        { "word scramble", "You got scrambled by your own sword." },
-        { "word search", "You’re searching for a word? It’s the bird." },
-        	{
+    MAHModule.WhiteModuleIDs = new string[]
+	{
+		"wire sequence",
+		"simon says",
+		"maze",
+		"memory",
+		"needy capacitor",
+		"who's on first",
+		"needy vent gas",
+		"modules against humanity",
+		"needy knob",
+		"morse code",
+		"two bits",
+		"anagrams",
+		"word scramble",
+		"semaphore",
+		"colour flash",
+		"logic",
+		"listening",
+		"mystic square",
+		"crazy talk",
+		"silly slots",
+		"probing",
+		"forget me not",
+		"morsematics",
+		"simon states",
+		"perspective pegs",
+		"caesar cipher",
+		"tic tac toe",
+		"astrology",
+		"adventure game",
+		"skewed slots",
+		"blind alley",
+		"english test",
+		"mouse in the maze",
+		"turn the keys",
+		"turn the key",
+		"tetris",
+		"sea shells",
+		"murder",
+		"adjacent letters",
+		"colored squares",
+		"hexamaze",
+		"souvenir",
+		"simon screams",
+		"http response",
+		"wire placement",
+		"coordinates",
+		"battleship",
+		"game of life simple",
+		"colored switches",
+		"the clock",
+		"button sequences",
+		"burglar alarm",
+		"backgrounds",
+		"the stopwatch",
+		"the iphone",
+		"ice cream",
+		"the swan",
+		"monsplode trading cards",
+		"neutralization",
+		"the sun",
+		"european travel",
+		"blind maze",
+		"cheap checkout"
+	};
+	
+	MAHModule.BlackModuleIDs = new string[]
+	{
+		"the button",
+		"password",
+		"wires",
+		"keypad",
+		"complicated wires",
+		"chess",
+		"switches",
+		"emoji math",
+		"letter keys",
+		"orientation cube",
+		"piano keys",
+		"connection check",
+		"cryptography",
+		"number pad",
+		"alphabet",
+		"round keypad",
+		"plumbing",
+		"safety safe",
+		"resistors",
+		"microcontroller",
+		"the gamepad",
+		"laundry",
+		"3d maze",
+		"follow the leader",
+		"friendship",
+		"the bulb",
+		"monsplode, fight!",
+		"foreign exchange rates",
+		"combination lock",
+		"shape shift",
+		"needy math",
+		"lights out",
+		"motion sense",
+		"needy rotary phone",
+		"needy quiz",
+		"who's that monsplode?",
+		"filibuster",
+		"third base",
+		"bitmaps",
+		"rock-paper-scissors-l.-sp.",
+		"square button",
+		"broken buttons",
+		"word search",
+		"complicated buttons",
+		"symbolic password",
+		"light cycle",
+		"text field",
+		"double-oh",
+		"game of life cruel",
+		"chord qualities",
+		"big circle",
+		"braille",
+		"creation",
+		"cooking",
+		"zoo",
+		"hunting",
+		"symbolic coordinates",
+		"the moon",
+		"mortal kombat",
+		"faulty backgrounds"
+	};
+	MAHModule.ModuleTexts = new Dictionary<string, string>
+	{
+		{
+			"3d maze",
+			"Want to see this in 3D? There are special glasses for it."
+		},
+		{
+			"adjacent letters",
+			"Bomb exploded. I was adjacent to it."
+		},
+		{
+			"adventure game",
+			"That's okay. There will be another adventure waiting for you soon."
+		},
+		{
+			"alphabet",
+			"Never try tongue twisters before you learn alphabet."
+		},
+		{
+			"anagrams",
+			"The instructions were clear and not in anagrams; you're an idiot."
+		},
+		{
+			"astrology",
+			"No success? I guess your zodiac was under the wrong planet's influence."
+		},
+		{
+			"battleship",
+			"This bomb is a true battle, just not on a ship."
+		},
+		{
+			"bitmaps",
+			"Lost in this bomb? Here's a bit of a map."
+		},
+		{
+			"blind alley",
+			"You're done. No way out from this blind alley."
+		},
+		{
+			"broken buttons",
+			"Pressing these buttons is useless. They’re broken."
+		},
+		{
+			"caesar cipher",
+			"You dealt with it like a true Caesar."
+		},
+		{
+			"chess",
+			"I would play even Billy the Puppet if that game was chess."
+		},
+		{
+			"colored squares",
+			"It's cool to be square but only if your colored."
+		},
+		{
+			"colour flash",
+			"That almost got you dead. Your whole life flashed before your eyes."
+		},
+		{
+			"combination lock",
+			"Are you sure this is the combination you need?"
+		},
+		{
+			"complicated buttons",
+			"Pressing buttons should be easy, not complicated."
+		},
+		{
+			"complicated wires",
+			"Cut all the wires! It's not that complicated after all."
+		},
+		{
+			"connection check",
+			"Bomb exploded due to bad wifi connection."
+		},
+		{
+			"coordinates",
+			"You're walking funny. Have you lost your coordinates?"
+		},
+		{
+			"crazy talk",
+			"You're talking crazy. Get out."
+		},
+		{
+			"cryptography",
+			"Your mind is so cryptic, I can't read it."
+		},
+		{
+			"double-oh",
+			"Who cares about Double As or Double Ds when you can have Double Os?"
+		},
+		{
+			"emoji math",
+			"Did you know your texts can include words, and not just emojis?"
+		},
+		{
+			"english test",
+			"Do you know the difference between your crap and you're crap?"
+		},
+		{
+			"filibuster",
+			"Remember the title and just keep talking."
+		},
+		{
+			"follow the leader",
+			"If this bomb explodes, you're following the wrong political leader."
+		},
+		{
+			"foreign exchange rates",
+			"No currency exchange point? You should've taken your card."
+		},
+		{
+			"forget me not",
+			"Well done. You forgot it not."
+		},
+		{
+			"friendship",
+			"They say Monopoly ruins friendships. They have not tried KTANE."
+		},
+		{
+			"hexamaze",
+			"Someone must have put a-maze-ing hex on you."
+		},
+		{
+			"http response",
+			"404. The bomb not found."
+		},
+		{
+			"keypad",
+			"If you recognize any of these symbols, you're a smart fella."
+		},
+		{
+			"laundry",
+			"Friends are coming over. Quick, hide all your dirty laundry!"
+		},
+		{
+			"letter keys",
+			"Wait, now keys have letters on them? What is this sorcery?"
+		},
+		{
+			"light cycle",
+			"Dark in the room? Just cycle through the lights."
+		},
+		{
+			"lights out",
+			"Lights are out. Bomb's unavailable for 10 seconds."
+		},
+		{
+			"listening",
+			"Just got a strike. You need to listen to your experts better."
+		},
+		{
+			"logic",
+			"Do you have at least a pinch of logic in that head of yours?"
+		},
+		{
+			"maze",
+			"I know you feel lost. Sadly, this is not a maze so there's no way out."
+		},
+		{
+			"memory",
+			"Nope, that doesn't work. Try memorizing the manual next time."
+		},
+		{
+			"microcontroller",
+			"Trust your experts, don’t micro control them."
+		},
+		{
+			"modules against humanity",
+			"Yes, this bomb is very inhumane. Deal with it."
+		},
+		{
+			"monsplode, fight!",
+			"Why fight your family when you can fight Monsplodes? "
+		},
+		{
+			"morse code",
+			"If you're bad with words, try Morse code instead."
+		},
+		{
+			"morsematics",
+			"If you're bad with words, try Morsematics code instead."
+		},
+		{
+			"motion sense",
+			"Moves like Jagger? Not with that motion sense of yours."
+		},
+		{
+			"mouse in the maze",
+			"Tsk. Poor little mouse, can't do anything right."
+		},
+		{
+			"murder",
+			"If this doesn't get you murdered, I don't know what will."
+		},
+		{
+			"mystic square",
+			"You need serious help. From a shaman or a mystic, nothing less."
+		},
+		{
+			"needy capacitor",
+			"You're on the dishonorable discharge, Take your capacitor and leave."
+		},
+		{
+			"needy knob",
+			"You can play with this knob even when you're done with the bomb."
+		},
+		{
+			"needy math",
+			"Math is hard."
+		},
+		{
+			"needy quiz",
+			"I know you hate answering questions, but we do have to test you."
+		},
+		{
+			"needy rotary phone",
+			"Here, phone a friend for help. Old school style."
+		},
+		{
+			"needy vent gas",
+			"Stop venting your emotions. Vent gas instead."
+		},
+		{
+			"number pad",
+			"Keypad here, keypad there. I want a keypad with numbers!"
+		},
+		{
+			"orientation cube",
+			"Bad luck with your crush? Maybe it’s just their sexual orientation."
+		},
+		{
+			"password",
+			"You need to know the secret password to defuse this bomb."
+		},
+		{
+			"perspective pegs",
+			"If you can't do it, try to look from a different perspective."
+		},
+		{
+			"piano keys",
+			"Musical instruments? I recommend trying piano."
+		},
+		{
+			"plumbing",
+			"If you don't find a way out, try crawling through pipes."
+		},
+		{
+			"probing",
+			"Bad news. You're actually being probed by aliens."
+		},
+		{
+			"resistors",
+			"Don't resist the temptation. Just do it."
+		},
+		{
+			"rock-paper-scissors-l.-sp.",
+			"You're fighting a lizard. But don't use caber, use scissors."
+		},
+		{
+			"round keypad",
+			"You spin my head right round with those fancy symbols."
+		},
+		{
+			"safety safe",
+			"This bomb is so valuable it should be locked in a safe."
+		},
+		{
+			"sea shells",
+			"Who cares what she sells? She's not gonna sell it to you."
+		},
+		{
+			"semaphore",
+			"Just as I expected, you're waving a white flag already."
+		},
+		{
+			"shape shift",
+			"Why be a human when you can shapeshift into an owl?"
+		},
+		{
+			"silly slots",
+			"You failed. What a silly slot you are."
+		},
+		{
+			"simon says",
+			"Too late. simon says you should try again."
+		},
+		{
+			"simon screams",
+			"Simon screams at your incompetence."
+		},
+		{
+			"simon states",
+			"Too late. Simon states you should try again."
+		},
+		{
+			"skewed slots",
+			"Well, that's what happens when your world view is so skewed."
+		},
+		{
+			"souvenir",
+			"This explosion will leave a few souvenirs on your body."
+		},
+		{
+			"square button",
+			"Push the square button. Galvanize."
+		},
+		{
+			"switches",
+			"It’s useless. Switch to another bomb."
+		},
+		{
+			"symbolic password",
+			"Your password must be 6 symbols long."
+		},
+		{
+			"tetris",
+			"If you're tired of bombs, you could always play Tetris instead."
+		},
+		{
+			"text field",
+			"Who needs fields of gold when you have a field of text?"
+		},
+		{
+			"the bulb",
+			"You think you have a great idea? Nah, that's just a bulb above your head."
+		},
+		{
+			"the button",
+			"Push the button. Galvanize."
+		},
+		{
+			"the gamepad",
+			"Two kinds of people: those who use gamepad and the boring ones."
+		},
+		{
+			"third base",
+			"Don't tell me you're already in third base with this bomb?"
+		},
+		{
+			"tic tac toe",
+			"Lots of love, XOXO, The Bomb."
+		},
+		{
+			"turn the key",
+			"Just turn the key and leave the room."
+		},
+		{
+			"turn the keys",
+			"Just turn the keys and leave the room."
+		},
+		{
+			"two bits",
+			"Here's my two bits of information: you're gonna explode."
+		},
+		{
+			"who's on first",
+			"You're clearly the last, but who's first?"
+		},
+		{
+			"who's that monsplode?",
+			"Fighting Monsplodes? Identify them first."
+		},
+		{
+			"wire placement",
+			"Be careful where you place those wires!"
+		},
+		{
+			"wire sequence",
+			"Trickier than it sounds; all the wires are hidden behind panels."
+		},
+		{
+			"wires",
+			"Cut all the wires!"
+		},
+		{
+			"word scramble",
+			"You got scrambled by your own sword."
+		},
+		{
+			"word search",
+			"You’re searching for a word? It’s the bird."
+		},
+		{
 			"ice cream",
 			"I scream, you scream, but only I love it."
 		},
@@ -236,7 +649,7 @@ public class MAHModule : MonoBehaviour {
 			"game of life cruel",
 			"Life is cruel. So are games."
 		}
-    };
+	};
 
     private List<string> WhiteCardText;
     private List<string> BlackCardText;
